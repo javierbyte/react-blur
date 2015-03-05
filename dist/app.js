@@ -19195,7 +19195,7 @@ var App = React.createClass({displayName: "App",
     render:function() {
         return (
             React.createElement("div", null, 
-                React.createElement(Blur, {className: "blur-demo", img: "../assets/img.jpg", blurRadius: this.state.radius}, 
+                React.createElement(Blur, {className: "blur-demo", img: "/assets/img.jpg", blurRadius: this.state.radius}, 
                     "Blur radius: ", this.state.radius
                 ), 
 
