@@ -23,12 +23,12 @@ body {
   color: #fff;
 }
 .blur-demo {
-  width: 640px;
-  height: 480px;
+  width: 480px;
+  height: 360px;
   margin: 1rem auto;
 }
 .blur-input {
-  width: 640px;
+  width: 480px;
   margin: 1em;
 }
 .forkme {
