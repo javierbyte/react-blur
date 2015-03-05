@@ -1,7 +1,3 @@
-# react-textselect demo
+# react-blur
 
-## Build Instructions
-
-    npm install -g grunt-cli browserify lessc
-    npm install
-    grunt build
+A react component for create blurred backgrounds.
