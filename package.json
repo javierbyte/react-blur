@@ -1,0 +1,23 @@
+{
+  "name": "react-textselect-demo",
+  "version": "0.0.1",
+  "description": "react-textselect-demo",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-shell": "^1.1.1",
+    "jit-grunt": "^0.9.1",
+    "less-plugin-autoprefix": "^1.3.0",
+    "reactify": "^1.0.0"
+  },
+  "dependencies": {
+    "react": "^0.12.2",
+    "react-textselect": "0.0.3"
+  }
+}

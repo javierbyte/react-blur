@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+body {
+  font-family: 'Proxima Nova', 'Lato', sans-serif;
+  color: #333;
+  background: #f0f1f3;
+}
+#demo {
+  text-align: center;
+  position: absolute;
+  padding-top: 10em;
+  width: 100%;
+}
+.forkme {
+  display: block;
+}
+.react-textselect {
+    border-bottom: 1px solid rgba(0, 0, 0, .33);
+    overflow: hidden;
+    padding-right: 1em;
+    margin-right: .17em;
+    cursor: pointer;
+}
+.react-textselect::after {
+    position: absolute;
+    top: .45em;
+    right: 0;
+    display: block;
+    content: '';
+    height: 0;
+    width: 0;
+    border: .33em solid transparent;
+    border-top: .33em solid rgba(0, 0, 0, .33);
+}
+.react-textselect-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0;
+}
+
