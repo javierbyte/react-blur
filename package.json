@@ -17,6 +17,7 @@
     "reactify": "^1.0.0"
   },
   "dependencies": {
-    "react": "^0.12.2"
+    "react": "^0.12.2",
+    "react-blur": "0.0.1"
   }
 }
