@@ -24,8 +24,6 @@ var ReactBlur = React.createClass({
         Blur.height = container.offsetHeight;
         Blur.width = container.offsetWidth;
 
-        console.log(Blur.height, Blur.width);
-
         Blur.canvas = Blur.refs.canvas.getDOMNode();
         Blur.canvas.height = Blur.height;
         Blur.canvas.width = Blur.width;
@@ -41,8 +39,6 @@ var ReactBlur = React.createClass({
     componentWillReceiveProps(nextProps) {
         var Blur = this;
         var {blurRadius} = nextProps;
-
-        console.log(blurRadius);
 
         stackBlurImage( Blur.img, Blur.canvas, blurRadius, true, Blur.width, Blur.height)
     },
