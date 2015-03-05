@@ -1,6 +1,6 @@
 var React = require('react');
 
-var Blur = require('../../../react-blur/blur.jsx');
+var Blur = require('react-blur');
 
 var App = React.createClass({
 
