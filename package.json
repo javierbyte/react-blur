@@ -1,7 +1,7 @@
 {
-  "name": "react-textselect-demo",
+  "name": "react-blur-demo",
   "version": "0.0.1",
-  "description": "react-textselect-demo",
+  "description": "react-blur-demo",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +17,6 @@
     "reactify": "^1.0.0"
   },
   "dependencies": {
-    "react": "^0.12.2",
-    "react-textselect": "0.0.3"
+    "react": "^0.12.2"
   }
 }

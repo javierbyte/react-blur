@@ -1,28 +1,29 @@
 var React = require('react');
 
-var TextSelect = require('react-textselect');
+var Blur = require('../../../react-blur/blur.jsx');
 
 var App = React.createClass({
 
     getInitialState() {
         return {
-            selectedOption: 0
+            radius: 0
         }
     },
 
-    onTextSelectChange(event, key, value) {
+    onChangeRadius(event) {
         this.setState({
-            selectedOption: key
+            radius: parseInt(event.target.value, 10)
         })
     },
 
     render() {
         return (
             <div>
-                This is a <TextSelect
-                    options={['text select', 'react component', 'dropdown']}
-                    active={this.state.selectedOption}
-                    onChange={this.onTextSelectChange}/> inline with text.
+                <Blur className='blur-demo' img='../../assets/img.jpg' blurRadius={this.state.radius}>
+                    Blur radius: {this.state.radius}
+                </Blur>
+
+                <input className='blur-input' type='range' value={this.state.radius} onChange={this.onChangeRadius} min={0} max={100} range={1}/>
             </div>
         );
     }
