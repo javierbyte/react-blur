@@ -38,7 +38,6 @@ var shg_table = [
 ];
 
 function stackBlurImage(img, canvas, radius, blurAlphaChannel, w, h) {
-
     var nw = img.naturalWidth;
     var nh = img.naturalHeight;
 
@@ -63,11 +62,7 @@ function stackBlurImage(img, canvas, radius, blurAlphaChannel, w, h) {
     context.drawImage(img, Math.floor((drawW - w) / -2), Math.floor((drawH - h) / -2), Math.ceil(drawW), Math.ceil(drawH));
 
     if (isNaN(radius) || radius < 1) return;
-
-    if (blurAlphaChannel)
-        stackBlurCanvasRGBA(canvas, 0, 0, w, h, radius);
-    else
-        stackBlurCanvasRGB(canvas, 0, 0, w, h, radius);
+    stackBlurCanvasRGB(canvas, 0, 0, w, h, radius);
 }
 
 function stackBlurCanvasRGB(canvas, top_x, top_y, width, height, radius) {
@@ -271,7 +266,6 @@ function stackBlurCanvasRGB(canvas, top_x, top_y, width, height, radius) {
     }
 
     context.putImageData(imageData, top_x, top_y);
-
 }
 
 function BlurStack() {
