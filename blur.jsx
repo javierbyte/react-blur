@@ -1,6 +1,5 @@
-var React = require('react');
-
-var stackBlurImage = require('./vendor/StackBlur.js');
+var React = require('react'),
+    stackBlurImage = require('./vendor/StackBlur.js');
 
 var ReactBlur = React.createClass({
 
