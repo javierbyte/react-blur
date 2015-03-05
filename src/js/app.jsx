@@ -19,7 +19,7 @@ var App = React.createClass({
     render() {
         return (
             <div>
-                <Blur className='blur-demo' img='../../assets/img.jpg' blurRadius={this.state.radius}>
+                <Blur className='blur-demo' img='../assets/img.jpg' blurRadius={this.state.radius}>
                     Blur radius: {this.state.radius}
                 </Blur>
 
