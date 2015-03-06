@@ -8,6 +8,7 @@
   },
   "keywords": [
     "react",
+    "react-component",
     "component",
     "text",
     "select"
@@ -24,7 +25,7 @@
       ]
     ]
   },
-  "dependencies": {
-    "react": "^0.12.2"
+  "peerDependencies": {
+    "react": "^0.12.x"
   }
 }
