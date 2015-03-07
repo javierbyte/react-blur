@@ -1,7 +1,7 @@
 {
   "name": "react-blur",
-  "version": "0.0.4",
-  "description": "Select dropdown over text in React.",
+  "version": "0.0.6",
+  "description": "React component for creating blurred backgrounds.",
   "main": "blur.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
