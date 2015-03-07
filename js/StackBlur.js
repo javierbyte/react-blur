@@ -37,7 +37,7 @@ var shg_table = [
     24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24
 ];
 
-function stackBlurImage(img, canvas, radius, blurAlphaChannel, w, h) {
+function stackBlurImage(img, canvas, radius, w, h) {
     var nw = img.naturalWidth;
     var nh = img.naturalHeight;
 

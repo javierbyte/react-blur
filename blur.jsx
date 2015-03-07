@@ -15,8 +15,8 @@ var ReactBlur = React.createClass({
     },
 
     componentDidMount() {
-        var Blur = this;
-        var {blurRadius} = Blur.props;
+        var Blur = this,
+            {blurRadius} = Blur.props;
 
         var container = Blur.getDOMNode();
 
@@ -30,21 +30,18 @@ var ReactBlur = React.createClass({
         var ctx = Blur.canvas.getContext('2d');
         Blur.img = new Image;
         Blur.img.onload = function(){
-            stackBlurImage( Blur.img, Blur.canvas, blurRadius, true, Blur.width, Blur.height)
+            stackBlurImage( Blur.img, Blur.canvas, blurRadius, Blur.width, Blur.height)
         };
         Blur.img.src = Blur.props.img;
     },
 
     componentWillReceiveProps(nextProps) {
-        var Blur = this;
-        var {blurRadius} = nextProps;
-
-        stackBlurImage( Blur.img, Blur.canvas, blurRadius, true, Blur.width, Blur.height)
+        stackBlurImage(this.img, this.canvas, nextProps.blurRadius, this.width, this.height);
     },
 
     render() {
-        var {img, className, children, ...other} = this.props;
-        var classes = 'react-blur';
+        var {img, className, children, ...other} = this.props,
+            classes = 'react-blur';
 
         if(className) {
             classes += ' ' + className;
