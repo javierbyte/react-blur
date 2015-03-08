@@ -4,7 +4,7 @@ React component for creating blurred backgrounds.
 
 [Live demo](http://javierbyte.github.io/react-blur/)
 
-![react-textselect screenshot](docs/screenshot.png)
+![react-blur](docs/screenshot.png)
 
 ## Installation
 

@@ -11,6 +11,8 @@
     "react-component",
     "component",
     "text",
+    "canvas",
+    "blur",
     "select"
   ],
   "author": "javierbyte",
