@@ -1,8 +1,8 @@
 # React Blur
 
-React component for creating blurred backgrounds.
+React component for creating blurred backgrounds using canvas.
 
-[Live demo](http://javierbyte.github.io/react-blur/)
+[Live demo](http://javierbyte.github.io/react-blur/)(http://javierbyte.github.io/react-blur/)
 
 ![react-blur](screenshot.png)
 
@@ -24,4 +24,4 @@ React component for creating blurred backgrounds.
 * img: The image path.
 * blurRadius: The size of the blur radius.
 
-Thanks to [Quasimodo](http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html) for the algorithm.
+Thanks to [Quasimodo](http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html) for the original stack blur algorithm.

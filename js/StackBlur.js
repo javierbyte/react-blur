@@ -17,7 +17,6 @@ var mul_table = [
     289, 287, 285, 282, 280, 278, 275, 273, 271, 269, 267, 265, 263, 261, 259
 ];
 
-
 var shg_table = [
     9, 11, 12, 13, 13, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 17,
     17, 17, 17, 17, 17, 17, 18, 18, 18, 18, 18, 18, 18, 18, 18, 19,
@@ -264,7 +263,6 @@ function stackBlurCanvasRGB(canvas, top_x, top_y, width, height, radius) {
             yi += width;
         }
     }
-
     context.putImageData(imageData, top_x, top_y);
 }
 
