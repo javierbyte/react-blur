@@ -18,6 +18,7 @@ React component for creating blurred backgrounds using canvas.
         The content.
     </Blur>
 
+For a complete example see the code in the [demo branch](https://github.com/javierbyte/react-blur/blob/gh-pages/src/js/app.jsx).
 
 #### Props.
 
