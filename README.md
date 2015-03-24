@@ -22,7 +22,7 @@ For a complete example see the code in the [demo branch](https://github.com/javi
 
 #### Props.
 
-* img: The image path.
-* blurRadius: The size of the blur radius.
+* `img`: The image path.
+* `blurRadius`: The size of the blur radius.
 
 Thanks to [Quasimodo](http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html) for the original stack blur algorithm.
