@@ -24,5 +24,6 @@ For a complete example see the code in the [demo branch](https://github.com/javi
 
 * `img`: The image path.
 * `blurRadius`: The size of the blur radius.
+* `resizeSpeed`: Optional. How fast the canvas should re-render on resize? Defaults to 100ms.
 
 Thanks to [Quasimodo](http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html) for the original stack blur algorithm.
