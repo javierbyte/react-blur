@@ -1,6 +1,6 @@
 {
   "name": "react-blur",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React component for creating blurred backgrounds.",
   "main": "blur.jsx",
   "scripts": {
