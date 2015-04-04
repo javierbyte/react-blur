@@ -18,12 +18,10 @@ body {
 }
 #demo {
   text-align: center;
-  position: absolute;
   padding: 3em 1.5em 1.5em;
   width: 100%;
 }
 .react-blur {
-  text-transform: uppercase;
   text-shadow: rgba(0, 0, 0, 0.2) 0 1px 1px, rgba(0, 0, 0, 0.4) 0 2px 8px;
   font-weight: 700;
   padding: 2rem;
@@ -45,6 +43,9 @@ body {
 }
 .forkme {
   display: block;
+}
+.footer {
+  text-align: center;
 }
 .react-blur-canvas {
     position: absolute;

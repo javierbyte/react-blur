@@ -28,7 +28,7 @@ var App = React.createClass({
                 <iframe src="https://ghbtns.com/github-btn.html?user=javierbyte&repo=react-blur&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="160px" height="30px"></iframe>
 
                 <Blur className='blur-demo' img='assets/img.jpg' blurRadius={this.state.radius}>
-                    Blur radius: {this.state.radius}
+                    BLUR RADIUS: {this.state.radius}px
                 </Blur>
 
                 <input className='blur-input' type='range' value={this.state.radius} onChange={this.onChangeRadius} min={0} max={100} range={1}/>
