@@ -74,7 +74,6 @@ function stackBlurCanvasRGB(canvas, top_x, top_y, width, height, radius) {
     try {
         imageData = context.getImageData(top_x, top_y, width, height);
     } catch (e) {
-        alert("Cannot access image");
         throw new Error("unable to access image data: " + e);
     }
 
