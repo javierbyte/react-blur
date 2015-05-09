@@ -24,7 +24,7 @@ var ReactBlur = React.createClass({
         window.addEventListener('resize', this.resize);
 
         var {blurRadius} = this.props;
-        var container = React.finDOMNode(this);
+        var container = React.findDOMNode(this);
 
         this.height = container.offsetHeight;
         this.width = container.offsetWidth;
