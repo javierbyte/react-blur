@@ -1,8 +1,11 @@
 var React = require('react/addons'),
-    stackBlurImage = require('./js/StackBlur.js');
+    stackBlurImage = require('../lib/StackBlur.js');
 
 var ReactBlur = React.createClass({
-    mixins: [React.addons.PureRenderMixin],
+    
+    mixins: [
+        React.addons.PureRenderMixin
+    ],
 
     propTypes: {
         img: React.PropTypes.string.isRequired,
