@@ -14,6 +14,12 @@ React component for creating blurred backgrounds using canvas.
 
     var Blur = require('react-blur');
 
+### Add styles
+
+	@import url(node_modules/react-gemini-scrollbar/node_modules/gemini-scrollbar/gemini-scrollbar.css);
+
+### Example
+
     <Blur img='/directory/img.jpg' blurRadius={5}>
         The content.
     </Blur>
@@ -24,6 +30,6 @@ For a complete example see the code in the [demo branch](https://github.com/javi
 
 * `img`: The image path.
 * `blurRadius`: The size of the blur radius.
-* `resizeSpeed`: Optional. How fast the canvas should re-render on resize? Defaults to 100ms.
+* `resizeInterval`: Optional. How fast the canvas should re-render on resize? Defaults to 128ms.
 
 Thanks to [Quasimodo](http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html) for the original stack blur algorithm.

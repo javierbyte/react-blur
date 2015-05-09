@@ -7,38 +7,36 @@ var ReactBlur = React.createClass({
     propTypes: {
         img: React.PropTypes.string.isRequired,
         blurRadius: React.PropTypes.number,
-        resizeSpeed: React.PropTypes.number
+        resizeInterval: React.PropTypes.number
     },
 
     getDefaultProps() {
         return {
             blurRadius: 0,
-            resizeSpeed: 100
+            resizeInterval: 128
         }
     },
 
     componentDidMount() {
         window.addEventListener('resize', this.resize);
 
-        var Blur = this,
-            {blurRadius} = Blur.props;
+        var {blurRadius} = this.props;
+        var container = React.finDOMNode(this);
 
-        var container = Blur.getDOMNode();
+        this.height = container.offsetHeight;
+        this.width = container.offsetWidth;
 
-        Blur.height = container.offsetHeight;
-        Blur.width = container.offsetWidth;
+        this.canvas = React.findDOMNode(this.refs.canvas);
+        this.canvas.height = this.height;
+        this.canvas.width = this.width;
 
-        Blur.canvas = Blur.refs.canvas.getDOMNode();
-        Blur.canvas.height = Blur.height;
-        Blur.canvas.width = Blur.width;
-
-        var ctx = Blur.canvas.getContext('2d');
-        Blur.img = new Image;
-        Blur.img.crossOrigin = "Anonymous";
-        Blur.img.onload = function(){
-            stackBlurImage( Blur.img, Blur.canvas, blurRadius, Blur.width, Blur.height)
+        var ctx = this.canvas.getContext('2d');
+        this.img = new Image;
+        this.img.crossOrigin = "Anonymous";
+        this.img.onload = () => {
+            stackBlurImage( this.img, this.canvas, blurRadius, this.width, this.height)
         };
-        Blur.img.src = Blur.props.img;
+        this.img.src = this.props.img;
     },
 
     componentWillUnmount() {
@@ -46,32 +44,30 @@ var ReactBlur = React.createClass({
     },
 
     resize() {
-        var Blur = this;
-
         var now = +new Date,
             args = arguments,
             deferTimer,
-            threshhold = Blur.props.resizeSpeed;
+            threshhold = this.props.resizeInterval;
 
         if (this.last && now < this.last + threshhold) {
             clearTimeout(deferTimer);
-            deferTimer = setTimeout(function () {
+            deferTimer = setTimeout(() => {
                 this.last = now;
-                doResize();
+                this.doResize();
             }, threshhold);
         } else {
             this.last = now;
-            doResize();
+            this.doResize();
         }
+    },
 
-        function doResize() {
-            var container = Blur.getDOMNode();
+    doResize() {
+        var container = React.findDOMNode(this);
 
-            Blur.height = container.offsetHeight;
-            Blur.width = container.offsetWidth;
+        this.height = container.offsetHeight;
+        this.width = container.offsetWidth;
 
-            stackBlurImage(Blur.img, Blur.canvas, Blur.props.blurRadius, Blur.width, Blur.height);
-        }
+        stackBlurImage(this.img, this.canvas, this.props.blurRadius, this.width, this.height);
     },
 
     componentWillReceiveProps(nextProps) {
@@ -87,11 +83,7 @@ var ReactBlur = React.createClass({
         }
 
         return (
-            <div
-                {...other}
-                className={classes}
-                onClick={this.clickTest} >
-
+            <div {...other} className={classes} onClick={this.clickTest} >
                 <canvas className='react-blur-canvas' ref='canvas' />
                 {children}
             </div>
