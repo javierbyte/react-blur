@@ -16,7 +16,7 @@ React component for creating blurred backgrounds using canvas.
 
 ### Add styles
 
-	@import url(node_modules/react-gemini-scrollbar/node_modules/react-blur/dist.css);
+	@import url(node_modules/react-blur/dist.css);
 
 ### Example
 
