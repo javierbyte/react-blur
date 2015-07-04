@@ -1,6 +1,6 @@
 {
   "name": "react-blur",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "React component for creating blurred backgrounds.",
   "main": "dist/blur.js",
   "scripts": {
@@ -8,18 +8,24 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "blur",
+    "canvas",
+    "component",
     "react",
     "react-component",
-    "component",
-    "text",
-    "canvas",
-    "blur",
-    "select"
+    "select",
+    "text"
   ],
-  "repository" : {
-    "type" : "git",
-    "url" : "http://github.com/javierbyte/react-blur.git"
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/javierbyte/react-blur.git"
   },
   "author": "javierbyte",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^3.1.20",
+    "eslint": "^0.24.0",
+    "eslint-plugin-babel": "^1.0.0",
+    "eslint-plugin-react": "^2.6.4"
+  }
 }
