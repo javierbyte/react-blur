@@ -1,3 +1,6 @@
+# 0.2.4
+* Prevent the component to crash if there was a CORS error.
+
 # 0.2.3
 * Stop wasting renders on componentWillReceiveProps, using componentWillUpdate instead.
 
