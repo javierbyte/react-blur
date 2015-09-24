@@ -74,6 +74,9 @@ var ReactBlur = React.createClass({
   },
 
   componentWillUpdate(nextProps) {
+    if (this.img.src !== nextProps.img) {
+      this.img.src = nextProps.img;
+    }
     stackBlurImage(this.img, this.canvas, nextProps.blurRadius, this.width, this.height);
   },
 
