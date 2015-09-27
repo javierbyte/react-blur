@@ -1,3 +1,6 @@
+# 0.2.5
+* Update image if a new image src is passed in props [ab54d60d]
+
 # 0.2.4
 * Prevent the component to crash if there was a CORS error.
 
