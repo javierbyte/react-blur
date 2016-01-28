@@ -1,8 +1,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var PureRenderMixin = require('react-addons-pure-render-mixin');
 var stackBlurImage = require('../lib/StackBlur.js');
 
 var ReactBlur = React.createClass({
+  mixins: [
+    PureRenderMixin
+  ],
+  
   propTypes: {
     img: React.PropTypes.string.isRequired,
     blurRadius: React.PropTypes.number,
