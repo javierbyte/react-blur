@@ -1,12 +1,8 @@
-var React = require('react/addons');
+var React = require('react');
+var ReactDOM = require('react-dom');
 var stackBlurImage = require('../lib/StackBlur.js');
 
 var ReactBlur = React.createClass({
-
-  mixins: [
-    React.addons.PureRenderMixin
-  ],
-
   propTypes: {
     img: React.PropTypes.string.isRequired,
     blurRadius: React.PropTypes.number,
@@ -24,12 +20,12 @@ var ReactBlur = React.createClass({
 
   componentDidMount() {
     var {blurRadius} = this.props;
-    var container = React.findDOMNode(this);
+    var container = ReactDOM.findDOMNode(this);
 
     this.height = container.offsetHeight;
     this.width = container.offsetWidth;
 
-    this.canvas = React.findDOMNode(this.refs.canvas);
+    this.canvas = ReactDOM.findDOMNode(this.refs.canvas);
     this.canvas.height = this.height;
     this.canvas.width = this.width;
 
@@ -65,7 +61,7 @@ var ReactBlur = React.createClass({
   },
 
   doResize() {
-    var container = React.findDOMNode(this);
+    var container = ReactDOM.findDOMNode(this);
 
     this.height = container.offsetHeight;
     this.width = container.offsetWidth;
