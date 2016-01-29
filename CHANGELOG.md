@@ -1,3 +1,6 @@
+# 0.3.0
+* Added support for react 0.14.x (thanks @voronianski!).
+
 # 0.2.5
 * Update image if a new image src is passed in props [ab54d60d]
 
