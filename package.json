@@ -23,7 +23,7 @@
   "author": "javierbyte",
   "license": "ISC",
   "dependencies": {
-    "react-addons-pure-render-mixin": "^0.14.7",
+    "react-addons-pure-render-mixin": "^0.14.7"
   },
   "devDependencies": {
     "babel-eslint": "^3.1.20",
