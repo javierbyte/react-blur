@@ -1,3 +1,6 @@
+# 0.3.1
+* Fix `react-addons-pure-render-mixin` dependency bug. (thanks @bogas04!).
+
 # 0.3.0
 * Added support for react 0.14.x (thanks @voronianski!).
 
