@@ -1,8 +1,8 @@
 {
   "name": "react-blur",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "React component for creating blurred backgrounds.",
-  "main": "dist/blur.js",
+  "main": "src/blur.jsx",
   "scripts": {
     "prepublish": "mkdir -p dist && babel src/blur.jsx -u -o dist/blur.js && lessc src/blur.less dist/blur.css",
     "test": "echo \"Error: no test specified\" && exit 1"
