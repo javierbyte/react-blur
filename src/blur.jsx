@@ -1,57 +1,64 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var PureRenderMixin = require('react-addons-pure-render-mixin');
-var stackBlurImage = require('../lib/StackBlur.js');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+const stackBlurImage = require('../lib/StackBlur.js');
 
-var ReactBlur = React.createClass({
-  mixins: [
-    PureRenderMixin
-  ],
-  
-  propTypes: {
-    img: React.PropTypes.string.isRequired,
-    blurRadius: React.PropTypes.number,
+export default class ReactBlur extends React.Component {
+  static propTypes = {
+    img           : React.PropTypes.string.isRequired,
+    blurRadius    : React.PropTypes.number,
     resizeInterval: React.PropTypes.number,
-    className: React.PropTypes.string,
-    children: React.PropTypes.any
-  },
+    className     : React.PropTypes.string,
+    children      : React.PropTypes.any
+  };
 
-  getDefaultProps() {
-    return {
-      blurRadius: 0,
-      resizeInterval: 128
-    };
-  },
+  static defaultProps = {
+    blurRadius    : 0,
+    resizeInterval: 128
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  }
 
   componentDidMount() {
-    var {blurRadius} = this.props;
-    var container = ReactDOM.findDOMNode(this);
+    const { blurRadius } = this.props;
+    const container = ReactDOM.findDOMNode(this);
 
     this.height = container.offsetHeight;
-    this.width = container.offsetWidth;
+    this.width  = container.offsetWidth;
 
-    this.canvas = ReactDOM.findDOMNode(this.refs.canvas);
+    this.canvas        = ReactDOM.findDOMNode(this.refs.canvas);
     this.canvas.height = this.height;
-    this.canvas.width = this.width;
+    this.canvas.width  = this.width;
 
-    this.img = new Image();
+    this.img             = new Image();
     this.img.crossOrigin = 'Anonymous';
-    this.img.onload = () => {
-      stackBlurImage( this.img, this.canvas, blurRadius, this.width, this.height);
+    this.img.onload      = () => {
+      stackBlurImage(this.img, this.canvas, blurRadius, this.width, this.height);
     };
-    this.img.src = this.props.img;
+    this.img.src         = this.props.img;
 
     window.addEventListener('resize', this.resize);
-  },
+  }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize);
-  },
+  }
+
+  componentWillUpdate(nextProps) {
+    if (this.img.src !== nextProps.img) {
+      this.img.src = nextProps.img;
+    }
+    stackBlurImage(this.img, this.canvas, nextProps.blurRadius, this.width, this.height);
+  }
 
   resize() {
-    var now = new Date().getTime();
-    var deferTimer;
-    var threshhold = this.props.resizeInterval;
+    const now        = new Date().getTime();
+    let deferTimer;
+    const threshhold = this.props.resizeInterval;
 
     if (this.last && now < this.last + threshhold) {
       clearTimeout(deferTimer);
@@ -63,26 +70,19 @@ var ReactBlur = React.createClass({
       this.last = now;
       this.doResize();
     }
-  },
+  }
 
   doResize() {
-    var container = ReactDOM.findDOMNode(this);
+    const container = ReactDOM.findDOMNode(this);
 
     this.height = container.offsetHeight;
-    this.width = container.offsetWidth;
+    this.width  = container.offsetWidth;
 
     stackBlurImage(this.img, this.canvas, this.props.blurRadius, this.width, this.height);
-  },
-
-  componentWillUpdate(nextProps) {
-    if (this.img.src !== nextProps.img) {
-      this.img.src = nextProps.img;
-    }
-    stackBlurImage(this.img, this.canvas, nextProps.blurRadius, this.width, this.height);
-  },
+  }
 
   render() {
-    var {img, className, children, ...other} = this.props;
+    var { className, children, ...other } = this.props;
     var classes = 'react-blur';
 
     if (className) {
@@ -90,12 +90,10 @@ var ReactBlur = React.createClass({
     }
 
     return (
-      <div {...other} className={classes} onClick={this.clickTest} >
+      <div {...other} className={classes} onClick={this.clickTest}>
         <canvas className='react-blur-canvas' ref='canvas' />
         {children}
       </div>
     );
   }
-});
-
-module.exports = ReactBlur;
+};
