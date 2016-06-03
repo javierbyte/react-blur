@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-var stackBlurImage = require('../lib/StackBlur.js');
+const stackBlurImage = require('../lib/StackBlur.js');
 
 export default class ReactBlur extends React.Component {
   static propTypes = {
