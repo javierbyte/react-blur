@@ -10,10 +10,10 @@ module.exports = function(grunt) {
                 command: 'clear && mkdir -p dist'
             },
             reactify: {
-                command: 'browserify -t [reactify --harmony] src/js/app.jsx -o dist/app.js'
+                command: '$(npm bin)/browserify -t [reactify --harmony] src/js/app.jsx -o dist/app.js'
             },
             less: {
-                command: 'lessc src/css/main.less --autoprefix > dist/style.css'
+                command: '$(npm bin)/lessc src/css/main.less --autoprefix > dist/style.css'
             }
         },
         watch: {

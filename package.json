@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^13.0.1",
     "grunt": "^0.4.x",
     "grunt-contrib-watch": "^0.6.x",
     "grunt-shell": "^1.1.x",
@@ -17,7 +18,7 @@
     "reactify": "^1.0.x"
   },
   "dependencies": {
-    "react": "^0.13.3",
-    "react-blur": "0.2.x"
+    "react": "^15.1",
+    "react-blur": "0.4.x"
   }
 }
