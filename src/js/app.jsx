@@ -1,26 +1,36 @@
 var React = require('react'),
-    Blur = require('react-blur');
+    Blur = require('react-blur').default,
+    ReactDOM = require('react-dom');
 
 var App = React.createClass({
 
-    getInitialState() {
+    getInitialState: function() {
         return {
-            radius: 0
+            radius: 0,
+            img: 'assets/img.jpg'
         }
     },
 
-    componentDidMount() {
+    componentDidMount: function() {
         {/* twitter button */}
         (function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}})(document, 'script', 'twitter-wjs');
     },
 
-    onChangeRadius(event) {
+    onChangeRadius: function(event) {
         this.setState({
             radius: parseInt(event.target.value, 10)
         })
     },
 
-    render() {
+    onChangeSrc: function(event) {
+        this.setState({
+            img: this.state.img === 'assets/img.jpg' ?
+                'assets/philz-cupz.jpg' :
+                'assets/img.jpg'
+        })
+    },
+
+    render: function() {
         return (
             <div>
                 <a href="https://twitter.com/share"
@@ -35,15 +45,19 @@ var App = React.createClass({
                     width="160px"
                     height="30px"/>
 
-                <Blur className='blur-demo' img='assets/img.jpg' blurRadius={this.state.radius}>
+                <Blur className='blur-demo' img={this.state.img} blurRadius={this.state.radius}>
                     BLUR RADIUS: {this.state.radius}px
                 </Blur>
 
                 <input className='blur-input' type='range' value={this.state.radius} onChange={this.onChangeRadius} min={0} max={100} range={1}/>
+
+                <div>
+                    <a onClick={this.onChangeSrc} href="#">Change Image</a>
+                </div>
             </div>
         );
     }
 
 });
 
-React.render(<App/>, document.getElementById('demo'));
+ReactDOM.render(<App/>, document.getElementById('demo'));
