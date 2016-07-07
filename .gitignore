@@ -1,3 +1,6 @@
 **/node_modules
 *.log
 /dist
+
+# Mac
+.DS_Store
