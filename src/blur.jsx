@@ -41,11 +41,11 @@ export default class ReactBlur extends React.Component {
     };
     this.img.src         = this.props.img;
 
-    window.addEventListener('resize', this.resize);
+    window.addEventListener('resize', this.resize.bind(this));
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.resize);
+    window.removeEventListener('resize', this.resize.bind(this));
   }
 
   componentWillUpdate(nextProps) {
