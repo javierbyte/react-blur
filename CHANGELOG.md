@@ -1,3 +1,12 @@
+# 0.5.0
+* Fix gitignore for MAC
+* Fix undeclared vars
+* add onLoadFunction prop for hook into the blur loading.
+* make sure changing src keeps correct blurRadius
+* Do not reload image if the img src prop is relative (because it won't match this.img.src which is absolute)
+
+Thanks @iamJoeTaylor!
+
 # 0.3.1
 * Fix `react-addons-pure-render-mixin` dependency bug. (thanks @bogas04!).
 
