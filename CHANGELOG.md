@@ -1,3 +1,6 @@
+# 0.5.1
+* Prevents recursive calls caused by setting this.img.src to a falsey value. eg. an empty string. (thanks @joshgillies!).
+
 # 0.5.0
 * Fix gitignore for MAC
 * Fix undeclared vars
