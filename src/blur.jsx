@@ -77,7 +77,8 @@ export default class ReactBlur extends React.Component {
       props.onLoadFunction(event);
     };
     this.img.onerror     = (event) => {
-      this.img.src = '';
+      this.img.onerror = undefined; // Remove the onerror listener. Preventing recursive calls caused by setting this.img.src to a falsey value
+      this.img.src     = '';
       props.onLoadFunction(event);
     };
     this.img.src         = props.img;
