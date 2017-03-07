@@ -1,3 +1,6 @@
+# 0.5.2
+* Fix issue when the child canvas didn't fill the parent container. Thank @getmicah !
+
 # 0.5.1
 * Prevents recursive calls caused by setting this.img.src to a falsey value. eg. an empty string. (thanks @joshgillies!).
 
