@@ -22,9 +22,11 @@
   },
   "author": "javierbyte",
   "license": "ISC",
-  "dependencies": {
-    "prop-types": "^15.5.10",
+  "peerDependencies":{
     "react": "^15.1.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.10"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
