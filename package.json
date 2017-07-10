@@ -22,7 +22,7 @@
   },
   "author": "javierbyte",
   "license": "ISC",
-  "peerDependencies":{
+  "peerDependencies": {
     "react": "^15.1.0"
   },
   "dependencies": {
@@ -36,9 +36,12 @@
     "babel-preset-stage-1": "^6.5.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.2",
+    "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0"
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-react": "^7.1.0",
+    "prettier": "^1.5.2"
   }
 }

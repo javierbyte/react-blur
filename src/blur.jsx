@@ -25,7 +25,6 @@ class ReactBlur extends React.PureComponent {
 
   componentDidMount() {
     this.loadImage();
-
     window.addEventListener('resize', this.resize.bind(this));
   }
 
@@ -37,7 +36,13 @@ class ReactBlur extends React.PureComponent {
       this.setDimensions();
     } else {
       // if some other prop changed reblur
-      stackBlurImage(this.img, this.canvas, this.getCurrentBlur(), this.width, this.height);
+      stackBlurImage(
+        this.img,
+        this.canvas,
+        this.getCurrentBlur(),
+        this.width,
+        this.height
+      );
     }
   }
 
@@ -52,7 +57,6 @@ class ReactBlur extends React.PureComponent {
   setDimensions() {
     this.height = this.container.offsetHeight;
     this.width = this.container.offsetWidth;
-
     this.canvas.height = this.height;
     this.canvas.width = this.width;
   }
@@ -62,7 +66,6 @@ class ReactBlur extends React.PureComponent {
     if (this.img) {
       const newImg = new Image();
       newImg.src = newSrc;
-
       // if absolute SRC is the same
       return newImg.src === this.img.src;
     }
@@ -72,17 +75,31 @@ class ReactBlur extends React.PureComponent {
 
   loadImage() {
     if (this.isCurrentImgSrc(this.props.img)) {
-      stackBlurImage(this.img, this.canvas, this.props.blurRadius, this.width, this.height);
+      stackBlurImage(
+        this.img,
+        this.canvas,
+        this.props.blurRadius,
+        this.width,
+        this.height
+      );
       return;
     }
 
     this.img = new Image();
     this.img.crossOrigin = 'Anonymous';
-    this.img.onload = (event) => {
-      stackBlurImage(this.img, this.canvas, this.getCurrentBlur(), this.width, this.height);
+
+    this.img.onload = event => {
+      stackBlurImage(
+        this.img,
+        this.canvas,
+        this.getCurrentBlur(),
+        this.width,
+        this.height
+      );
       this.props.onLoadFunction(event);
     };
-    this.img.onerror = (event) => {
+
+    this.img.onerror = event => {
       // Remove the onerror listener.
       // Preventing recursive calls caused by setting this.img.src to a falsey value
       this.img.onerror = undefined;
@@ -115,7 +132,13 @@ class ReactBlur extends React.PureComponent {
   doResize() {
     this.setDimensions();
 
-    stackBlurImage(this.img, this.canvas, this.getCurrentBlur(), this.width, this.height);
+    stackBlurImage(
+      this.img,
+      this.canvas,
+      this.getCurrentBlur(),
+      this.width,
+      this.height
+    );
   }
 
   render() {
@@ -131,31 +154,37 @@ class ReactBlur extends React.PureComponent {
     } = this.props;
 
     let classes = 'react-blur';
-
     if (className) {
       classes += ` ${className}`;
     }
 
-    const containerStyle = enableStyles ? {
-      position: 'relative',
-    } : {};
-
-    const canvasStyle = enableStyles ? {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-    } : {};
+    const containerStyle = enableStyles
+      ? {
+          position: 'relative',
+        }
+      : {};
+    const canvasStyle = enableStyles
+      ? {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+        }
+      : {};
 
     return (
       <div
         className={classes}
-        ref={(ref) => { this.container = ref; }}
+        ref={ref => {
+          this.container = ref;
+        }}
         style={containerStyle}
         {...other}
       >
         <canvas
           className="react-blur-canvas"
-          ref={(ref) => { this.canvas = ref; }}
+          ref={ref => {
+            this.canvas = ref;
+          }}
           style={canvasStyle}
         />
         {children}

@@ -1,7 +1,17 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": [
+    "prettier"
+  ],
   "env": {
     "browser": true
+  },
+  "rules":{
+    "prettier/prettier": [1, { "trailingComma": "es5", "singleQuote": true }]
   }
 }
