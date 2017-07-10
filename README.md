@@ -1,4 +1,5 @@
 # [React Blur](http://javierbyte.github.io/react-blur/)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 React component for creating blurred backgrounds using canvas.
 
