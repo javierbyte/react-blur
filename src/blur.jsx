@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 const stackBlurImage = require('../lib/StackBlur.js');
 
-class ReactBlur extends React.Component {
+class ReactBlur extends React.PureComponent {
   static propTypes = {
     blurRadius: PropTypes.number,
     children: PropTypes.node,
@@ -23,12 +22,6 @@ class ReactBlur extends React.Component {
     onLoadFunction: () => {},
     resizeInterval: 128,
   };
-
-  constructor(props) {
-    super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-  }
 
   componentDidMount() {
     this.loadImage();
