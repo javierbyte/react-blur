@@ -9,6 +9,7 @@ class ReactBlur extends React.Component {
     blurRadius: PropTypes.number,
     children: PropTypes.node,
     className: PropTypes.string,
+    enableStyles: PropTypes.bool,
     img: PropTypes.string.isRequired,
     onLoadFunction: PropTypes.func,
     resizeInterval: PropTypes.number,
@@ -18,6 +19,7 @@ class ReactBlur extends React.Component {
     blurRadius: 0,
     children: null,
     className: '',
+    enableStyles: false,
     onLoadFunction: () => {},
     resizeInterval: 128,
   };
@@ -125,12 +127,13 @@ class ReactBlur extends React.Component {
 
   render() {
     const {
-      className,
-      img,
       blurRadius,
       children,
-      resizeInterval,
+      className,
+      enableStyles,
+      img,
       onLoadFunction,
+      resizeInterval,
       ...other
     } = this.props;
 
@@ -140,9 +143,28 @@ class ReactBlur extends React.Component {
       classes += ` ${className}`;
     }
 
+    const containerStyle = enableStyles ? {
+      position: 'relative',
+    } : {};
+
+    const canvasStyle = enableStyles ? {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    } : {};
+
     return (
-      <div className={classes} ref={(ref) => { this.container = ref; }} {...other}>
-        <canvas className="react-blur-canvas" ref={(ref) => { this.canvas = ref; }} />
+      <div
+        className={classes}
+        ref={(ref) => { this.container = ref; }}
+        style={containerStyle}
+        {...other}
+      >
+        <canvas
+          className="react-blur-canvas"
+          ref={(ref) => { this.canvas = ref; }}
+          style={canvasStyle}
+        />
         {children}
       </div>
     );
