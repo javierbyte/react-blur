@@ -34,6 +34,7 @@ For a complete example see the code in the [demo branch](https://github.com/javi
 * `img`: The image path.
 * `blurRadius`: Optional. The size of the blur radius.
 * `enableStyles`: Optional. Flag to include base styles inline, omit this to easily override.
+* `shouldResize`: Optional. If the canvas should re-render on resize? Defaults to true.
 * `resizeInterval`: Optional. How fast the canvas should re-render on resize? Defaults to 128ms.
 
 ### Contributing

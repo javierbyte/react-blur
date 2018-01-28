@@ -11,6 +11,7 @@ class ReactBlur extends React.PureComponent {
     enableStyles: PropTypes.bool,
     img: PropTypes.string.isRequired,
     onLoadFunction: PropTypes.func,
+    shouldResize: PropTypes.bool,
     resizeInterval: PropTypes.number,
   };
 
@@ -20,12 +21,15 @@ class ReactBlur extends React.PureComponent {
     className: '',
     enableStyles: false,
     onLoadFunction: () => {},
+    shouldResize: true,
     resizeInterval: 128,
   };
 
   componentDidMount() {
     this.loadImage();
-    window.addEventListener('resize', this.resize.bind(this));
+    if (this.props.shouldResize) {
+      window.addEventListener('resize', this.resize.bind(this));
+    }
   }
 
   componentDidUpdate() {
@@ -149,6 +153,7 @@ class ReactBlur extends React.PureComponent {
       enableStyles,
       img,
       onLoadFunction,
+      shouldResize,
       resizeInterval,
       ...other
     } = this.props;
