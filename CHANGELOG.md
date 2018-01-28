@@ -1,3 +1,6 @@
+# 0.6.0
+* Add conditional flag for resizing by @TheHaff
+
 # 0.5.2
 * Fix issue when the child canvas didn't fill the parent container. Thank @getmicah !
 
