@@ -1,4 +1,4 @@
-author{
+{
   "name": "react-blur",
   "version": "0.6.0",
   "description": "React component for creating blurred backgrounds.",
