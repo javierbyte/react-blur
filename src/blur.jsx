@@ -25,6 +25,11 @@ class ReactBlur extends React.PureComponent {
     resizeInterval: 128,
   };
 
+  constructor() {
+    super();
+    this.resize = this.resize.bind(this);
+  }
+
   componentDidMount() {
     this.loadImage();
     if (this.props.shouldResize) {
@@ -51,7 +56,7 @@ class ReactBlur extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.resize.bind(this));
+    window.removeEventListener('resize', this.resize);
   }
 
   getCurrentBlur() {
