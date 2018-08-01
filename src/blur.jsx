@@ -98,14 +98,16 @@ class ReactBlur extends React.PureComponent {
     this.img.crossOrigin = 'Anonymous';
 
     this.img.onload = event => {
-      stackBlurImage(
-        this.img,
-        this.canvas,
-        this.getCurrentBlur(),
-        this.width,
-        this.height
-      );
-      this.props.onLoadFunction(event);
+      if (this.img && this.canvas) {
+        stackBlurImage(
+          this.img,
+          this.canvas,
+          this.getCurrentBlur(),
+          this.width,
+          this.height
+        );
+        this.props.onLoadFunction(event);
+      }
     };
 
     this.img.onerror = event => {
