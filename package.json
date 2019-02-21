@@ -23,10 +23,10 @@
   "author": "javierbyte",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^15.1.0"
+    "react": "^16.8.2"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

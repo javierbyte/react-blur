@@ -1,206 +1,191 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
+import stackBlurImage from './StackBlur.js';
 
-const stackBlurImage = require('../lib/StackBlur.js');
+const ReactBlur = props => {
+  const {
+    blurRadius = 0,
+    children = null,
+    className = '',
+    enableStyles = false,
+    onLoadFunction = () => {},
+    shouldResize = true,
+    resizeInterval = 128,
+    img,
+    ...other
+  } = props;
 
-class ReactBlur extends React.PureComponent {
-  static propTypes = {
-    blurRadius: PropTypes.number,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    enableStyles: PropTypes.bool,
-    img: PropTypes.string.isRequired,
-    onLoadFunction: PropTypes.func,
-    shouldResize: PropTypes.bool,
-    resizeInterval: PropTypes.number,
-  };
+  const containerRef = useRef();
+  const canvasRef = useRef();
+  const imgRef = useRef();
+  const widthRef = useRef();
+  const heightRef = useRef();
 
-  static defaultProps = {
-    blurRadius: 0,
-    children: null,
-    className: '',
-    enableStyles: false,
-    onLoadFunction: () => {},
-    shouldResize: true,
-    resizeInterval: 128,
-  };
+  useEffect(() => {
+    loadImage();
 
-  constructor() {
-    super();
-    this.resize = this.resize.bind(this);
-  }
-
-  componentDidMount() {
-    this.loadImage();
-    if (this.props.shouldResize) {
-      window.addEventListener('resize', this.resize.bind(this));
+    if (shouldResize) {
+      window.addEventListener('resize', resize);
     }
-  }
 
-  componentDidUpdate() {
-    if (!this.img) {
-      this.loadImage(this.props);
-    } else if (!this.isCurrentImgSrc(this.props.img)) {
-      this.img.src = this.props.img;
-      this.setDimensions();
+    return () => {
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!imgRef.current) {
+      loadImage(props);
+    } else if (!isCurrentImgSrc(img)) {
+      imgRef.current.src = img;
+      setDimensions();
     } else {
       // if some other prop changed reblur
       stackBlurImage(
-        this.img,
-        this.canvas,
-        this.getCurrentBlur(),
-        this.width,
-        this.height
+        imgRef.current,
+        canvasRef.current,
+        getCurrentBlur(),
+        widthRef.current,
+        heightRef.current
       );
     }
-  }
+  });
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.resize);
-  }
+  const getCurrentBlur = () => {
+    return blurRadius;
+  };
 
-  getCurrentBlur() {
-    return this.props.blurRadius;
-  }
+  const setDimensions = () => {
+    heightRef.current = containerRef.current.offsetHeight;
+    widthRef.current = containerRef.current.offsetWidth;
+    canvasRef.current.height = heightRef.current;
+    canvasRef.current.width = widthRef.current;
+  };
 
-  setDimensions() {
-    this.height = this.container.offsetHeight;
-    this.width = this.container.offsetWidth;
-    this.canvas.height = this.height;
-    this.canvas.width = this.width;
-  }
-
-  isCurrentImgSrc(newSrc) {
+  const isCurrentImgSrc = newSrc => {
     // Handle relative paths
-    if (this.img) {
+    if (imgRef.current) {
       const newImg = new Image();
       newImg.src = newSrc;
       // if absolute SRC is the same
-      return newImg.src === this.img.src;
+      return newImg.src === imgRef.current.src;
     }
 
     return false;
-  }
+  };
 
-  loadImage() {
-    if (this.isCurrentImgSrc(this.props.img)) {
+  const loadImage = () => {
+    if (isCurrentImgSrc(imgRef.current)) {
       stackBlurImage(
-        this.img,
-        this.canvas,
-        this.props.blurRadius,
-        this.width,
-        this.height
+        imgRef.current,
+        canvasRef.current,
+        blurRadius,
+        widthRef.current,
+        heightRef.current
       );
       return;
     }
 
-    this.img = new Image();
-    this.img.crossOrigin = 'Anonymous';
+    imgRef.current = new Image();
+    imgRef.current.crossOrigin = 'Anonymous';
 
-    this.img.onload = event => {
+    imgRef.current.onload = event => {
       stackBlurImage(
-        this.img,
-        this.canvas,
-        this.getCurrentBlur(),
-        this.width,
-        this.height
+        imgRef.current,
+        canvasRef.current,
+        getCurrentBlur(),
+        widthRef.current,
+        heightRef.current
       );
-      this.props.onLoadFunction(event);
+      onLoadFunction(event);
     };
 
-    this.img.onerror = event => {
+    imgRef.current.onerror = event => {
       // Remove the onerror listener.
       // Preventing recursive calls caused by setting this.img.src to a falsey value
-      this.img.onerror = undefined;
+      imgRef.current.onerror = undefined;
 
-      this.img.src = '';
-      this.props.onLoadFunction(event);
+      imgRef.current.src = '';
+      onLoadFunction(event);
     };
-    this.img.src = this.props.img;
+    imgRef.current.src = img;
 
-    this.setDimensions();
-  }
+    setDimensions();
+  };
 
-  resize() {
+  const resize = () => {
     const now = new Date().getTime();
     let deferTimer;
-    const threshhold = this.props.resizeInterval;
+    const threshhold = resizeInterval;
 
-    if (this.last && now < this.last + threshhold) {
+    if (last && now < last + threshhold) {
       clearTimeout(deferTimer);
       deferTimer = setTimeout(() => {
-        this.last = now;
-        this.doResize();
+        last = now;
+        doResize();
       }, threshhold);
     } else {
-      this.last = now;
-      this.doResize();
+      last = now;
+      doResize();
     }
-  }
+  };
 
-  doResize() {
-    this.setDimensions();
+  const doResize = () => {
+    setDimensions();
 
     stackBlurImage(
-      this.img,
-      this.canvas,
-      this.getCurrentBlur(),
-      this.width,
-      this.height
+      imgRef.current,
+      canvasRef.current,
+      getCurrentBlur(),
+      Ref.current,
+      heightRef.current
     );
+  };
+
+  let classes = 'react-blur';
+  if (className) {
+    classes += ` ${className}`;
   }
 
-  render() {
-    const {
-      blurRadius,
-      children,
-      className,
-      enableStyles,
-      img,
-      onLoadFunction,
-      shouldResize,
-      resizeInterval,
-      ...other
-    } = this.props;
+  const containerStyle = enableStyles
+    ? {
+        position: 'relative'
+      }
+    : {};
+  const canvasStyle = enableStyles
+    ? {
+        position: 'absolute',
+        top: 0,
+        left: 0
+      }
+    : {};
 
-    let classes = 'react-blur';
-    if (className) {
-      classes += ` ${className}`;
-    }
+  return (
+    <div
+      className={classes}
+      ref={containerRef}
+      style={containerStyle}
+      {...other}
+    >
+      <canvas
+        className="react-blur-canvas"
+        ref={canvasRef}
+        style={canvasStyle}
+      />
+      {children}
+    </div>
+  );
+};
 
-    const containerStyle = enableStyles
-      ? {
-          position: 'relative',
-        }
-      : {};
-    const canvasStyle = enableStyles
-      ? {
-          position: 'absolute',
-          top: 0,
-          left: 0,
-        }
-      : {};
-
-    return (
-      <div
-        className={classes}
-        ref={ref => {
-          this.container = ref;
-        }}
-        style={containerStyle}
-        {...other}
-      >
-        <canvas
-          className="react-blur-canvas"
-          ref={ref => {
-            this.canvas = ref;
-          }}
-          style={canvasStyle}
-        />
-        {children}
-      </div>
-    );
-  }
-}
+ReactBlur.propTypes = {
+  blurRadius: PropTypes.number,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  enableStyles: PropTypes.bool,
+  img: PropTypes.string.isRequired,
+  onLoadFunction: PropTypes.func,
+  shouldResize: PropTypes.bool,
+  resizeInterval: PropTypes.number
+};
 
 export default ReactBlur;
