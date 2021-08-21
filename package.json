@@ -1,10 +1,11 @@
 {
   "name": "react-blur",
-  "version": "0.6.0",
+  "version": "1.0.1",
   "description": "React component for creating blurred backgrounds.",
   "main": "dist/blur.js",
   "scripts": {
-    "prepublish": "mkdir -p dist && babel src/blur.jsx -u -o dist/blur.js",
+    "build": "mkdir -p dist/lib && babel src/blur.jsx -u -o dist/blur.js && babel src/lib/StackBlur.js -u -o dist/lib/StackBlur.js",
+    "prepublish": "mkdir -p dist && babel src/blur.jsx -u -o dist/blur.js && babel src/lib/StackBlur.js -u -o dist/lib/StackBlur.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,8 +21,8 @@
     "type": "git",
     "url": "http://github.com/javierbyte/react-blur.git"
   },
-  "author": "javierbyte",
-  "license": "ISC",
+  "author": "hi@javier.xyz",
+  "license": "BSD-3-Clause",
   "peerDependencies": {
     "react": "^16.8.2"
   },
@@ -30,18 +31,18 @@
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^10.1.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.0.2",
-    "eslint-config-prettier": "^2.3.0",
-    "eslint-plugin-babel": "^4.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-prettier": "^2.1.2",
-    "eslint-plugin-react": "^7.1.0",
-    "prettier": "^1.5.2"
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "prettier": "^2.3.2"
   }
 }

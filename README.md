@@ -1,11 +1,8 @@
-# [React Blur](http://javierbyte.github.io/react-blur/)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+# [React Blur](https://javier.xyz/react-blur/)
 
 React component for creating blurred backgrounds using canvas.
 
-[Live demo](http://javierbyte.github.io/react-blur/)
-
-[![react-blur](screenshot.png)](http://javierbyte.github.io/react-blur/)
+[![react-blur](./website/public/react-blur.jpg)](https://javier.xyz/react-blur/)
 
 ## Installation
 
@@ -16,13 +13,13 @@ npm install react-blur --save
 ## Usage
 
 ```js
-var Blur = require('react-blur');
+import Blur from "react-blur";
 ```
 
 ### Example
 
 ```jsx
-<Blur img='/directory/img.jpg' blurRadius={5} enableStyles>
+<Blur img="/directory/img.jpg" blurRadius={5} enableStyles>
   The content.
 </Blur>
 ```
@@ -31,14 +28,12 @@ For a complete example see the code in the [demo branch](https://github.com/javi
 
 #### Props
 
-* `img`: The image path.
-* `blurRadius`: Optional. The size of the blur radius.
-* `enableStyles`: Optional. Flag to include base styles inline, omit this to easily override.
-* `shouldResize`: Optional. If the canvas should re-render on resize? Defaults to true.
-* `resizeInterval`: Optional. How fast the canvas should re-render on resize? Defaults to 128ms.
+- `img`: The image path.
+- `blurRadius`: Optional. The size of the blur radius.
+- `enableStyles`: Optional. Flag to include base styles inline, omit this to easily override.
+- `shouldResize`: Optional. If the canvas should re-render on resize? Defaults to true.
+- `resizeInterval`: Optional. How fast the canvas should re-render on resize? Defaults to 128ms.
 
 ### Contributing
 
-Please install [yarn](https://yarnpkg.com/en/) and use it to manage dependencies and the lockfile.
-
-*Thanks to [Quasimodo](http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html) for the original stack blur algorithm.*
+_Thanks to [Quasimodo](http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html) for the original stack blur algorithm._

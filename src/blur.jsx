@@ -1,16 +1,18 @@
-import PropTypes from 'prop-types';
-import React, { useEffect, useRef } from 'react';
-import stackBlurImage from './StackBlur.js';
+import PropTypes from "prop-types";
+import React, { useEffect, useRef } from "react";
+import stackBlurImage from "./lib/StackBlur.js";
 
-const ReactBlur = props => {
+let animating = false;
+
+const ReactBlur = (props) => {
   const {
     blurRadius = 0,
     children = null,
-    className = '',
+    className = "",
     enableStyles = false,
     onLoadFunction = () => {},
-    shouldResize = true,
-    resizeInterval = 128,
+    shouldResize = false,
+    resizeInterval = 64,
     img,
     ...other
   } = props;
@@ -25,11 +27,11 @@ const ReactBlur = props => {
     loadImage();
 
     if (shouldResize) {
-      window.addEventListener('resize', resize);
+      window.addEventListener("resize", resize);
     }
 
     return () => {
-      window.removeEventListener('resize', resize);
+      window.removeEventListener("resize", resize);
     };
   }, []);
 
@@ -41,19 +43,21 @@ const ReactBlur = props => {
       setDimensions();
     } else {
       // if some other prop changed reblur
-      stackBlurImage(
-        imgRef.current,
-        canvasRef.current,
-        getCurrentBlur(),
-        widthRef.current,
-        heightRef.current
-      );
+
+      if (animating) {
+        console.log("rejected");
+        return;
+      }
+
+      animating = true;
+
+      window.requestAnimationFrame(() => {
+        stackBlurImage(imgRef.current, canvasRef.current, blurRadius, widthRef.current, heightRef.current, () => {
+          animating = false;
+        });
+      });
     }
   });
-
-  const getCurrentBlur = () => {
-    return blurRadius;
-  };
 
   const setDimensions = () => {
     heightRef.current = containerRef.current.offsetHeight;
@@ -62,7 +66,7 @@ const ReactBlur = props => {
     canvasRef.current.width = widthRef.current;
   };
 
-  const isCurrentImgSrc = newSrc => {
+  const isCurrentImgSrc = (newSrc) => {
     // Handle relative paths
     if (imgRef.current) {
       const newImg = new Image();
@@ -76,36 +80,24 @@ const ReactBlur = props => {
 
   const loadImage = () => {
     if (isCurrentImgSrc(imgRef.current)) {
-      stackBlurImage(
-        imgRef.current,
-        canvasRef.current,
-        blurRadius,
-        widthRef.current,
-        heightRef.current
-      );
+      stackBlurImage(imgRef.current, canvasRef.current, blurRadius, widthRef.current, heightRef.current);
       return;
     }
 
     imgRef.current = new Image();
-    imgRef.current.crossOrigin = 'Anonymous';
+    imgRef.current.crossOrigin = "Anonymous";
 
-    imgRef.current.onload = event => {
-      stackBlurImage(
-        imgRef.current,
-        canvasRef.current,
-        getCurrentBlur(),
-        widthRef.current,
-        heightRef.current
-      );
+    imgRef.current.onload = (event) => {
+      stackBlurImage(imgRef.current, canvasRef.current, blurRadius, widthRef.current, heightRef.current);
       onLoadFunction(event);
     };
 
-    imgRef.current.onerror = event => {
+    imgRef.current.onerror = (event) => {
       // Remove the onerror listener.
       // Preventing recursive calls caused by setting this.img.src to a falsey value
       imgRef.current.onerror = undefined;
 
-      imgRef.current.src = '';
+      imgRef.current.src = "";
       onLoadFunction(event);
     };
     imgRef.current.src = img;
@@ -113,6 +105,7 @@ const ReactBlur = props => {
     setDimensions();
   };
 
+  let last;
   const resize = () => {
     const now = new Date().getTime();
     let deferTimer;
@@ -133,45 +126,30 @@ const ReactBlur = props => {
   const doResize = () => {
     setDimensions();
 
-    stackBlurImage(
-      imgRef.current,
-      canvasRef.current,
-      getCurrentBlur(),
-      Ref.current,
-      heightRef.current
-    );
+    stackBlurImage(imgRef.current, canvasRef.current, blurRadius, widthRef.current, heightRef.current);
   };
 
-  let classes = 'react-blur';
+  let classes = "react-blur";
   if (className) {
     classes += ` ${className}`;
   }
 
   const containerStyle = enableStyles
     ? {
-        position: 'relative'
+        position: "relative",
       }
     : {};
   const canvasStyle = enableStyles
     ? {
-        position: 'absolute',
+        position: "absolute",
         top: 0,
-        left: 0
+        left: 0,
       }
     : {};
 
   return (
-    <div
-      className={classes}
-      ref={containerRef}
-      style={containerStyle}
-      {...other}
-    >
-      <canvas
-        className="react-blur-canvas"
-        ref={canvasRef}
-        style={canvasStyle}
-      />
+    <div className={classes} ref={containerRef} style={containerStyle} {...other}>
+      <canvas className="react-blur-canvas" ref={canvasRef} style={canvasStyle} />
       {children}
     </div>
   );
@@ -185,7 +163,7 @@ ReactBlur.propTypes = {
   img: PropTypes.string.isRequired,
   onLoadFunction: PropTypes.func,
   shouldResize: PropTypes.bool,
-  resizeInterval: PropTypes.number
+  resizeInterval: PropTypes.number,
 };
 
 export default ReactBlur;

@@ -1,3 +1,10 @@
+# 1.0.1
+* Fix resizing
+
+# 1.0.0
+* Add `requestAnimationFrame` to prevent extra work.
+* Update dependencies.
+
 # 0.6.0
 * Add conditional flag for resizing by @TheHaff
 
