@@ -3,7 +3,7 @@
   "description": "React component for creating blurred backgrounds using canvas.",
   "version": "1.0.0",
   "private": true,
-  "homepage": "/",
+  "homepage": "https://javier.xyz/react-blur/",
   "dependencies": {
     "capsize": "^2.0.0",
     "jbx": "^1.3.0",

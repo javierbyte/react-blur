@@ -34,7 +34,7 @@ function App() {
       <Text>React component for creating blurred backgrounds using canvas.</Text>
       <Space h={2} />
       <Blur
-        img="/example-kyoto.jpg"
+        img="./example-kyoto.jpg"
         blurRadius={blur}
         enableStyles
         style={{
