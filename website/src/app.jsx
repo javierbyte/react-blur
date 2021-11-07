@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { JBX, HeaderH1, Text, Space, Container, Range, Box, A, CodeSnippet } from 'jbx';
+import { JBX, MainHeader, Text, Space, Container, Range, Box, A, CodeSnippet } from 'jbx';
 
 import Blur from 'react-blur';
 
@@ -19,27 +19,17 @@ function App() {
   return (
     <Container>
       <JBX accent={'#fdcb6e'} />
-      <HeaderH1
-        style={{
-          fontWeight: 900,
-          display: 'inline-block',
-          width: 'auto',
-          padding: '6px',
-          backgroundColor: 'var(--accent-color)'
-        }}
-      >
-        react blur
-      </HeaderH1>
+      <MainHeader>react blur</MainHeader>
       <Space h={1} />
       <Text>React component for creating blurred backgrounds using canvas.</Text>
       <Space h={2} />
       <Blur
-        img="./example-kyoto.jpg"
+        img="example-kyoto.jpg"
         blurRadius={blur}
         enableStyles
         style={{
-          height: 'min(calc(100vmin - 48px), 500px)',
-          width: 'min(calc(100vmin - 48px), 500px)'
+          height: 'min(calc(100vmin - 48px), 350px)',
+          width: 'min(calc(100vmin - 48px), 350px)'
         }}
       />
       <Box flex={1} padding={[1, 0]} style={{ maxWidth: 400 }}>

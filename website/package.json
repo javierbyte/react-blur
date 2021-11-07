@@ -6,12 +6,12 @@
   "homepage": "https://javier.xyz/react-blur/",
   "dependencies": {
     "capsize": "^2.0.0",
-    "jbx": "^1.3.0",
+    "jbx": "^1.6.0",
     "react": "^17.0.2",
     "react-blur": "^1.0.1",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
-    "styled-components": "^5.3.0"
+    "styled-components": "^5.3.3"
   },
   "scripts": {
     "dev": "react-scripts start",
@@ -46,7 +46,7 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react": "^7.26.1",
     "gh-pages": "^3.1.0"
   }
 }
