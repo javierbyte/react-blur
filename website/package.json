@@ -8,7 +8,7 @@
     "capsize": "^2.0.0",
     "jbx": "^1.6.0",
     "react": "^17.0.2",
-    "react-blur": "^1.0.1",
+    "react-blur": "^1.0.3",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3",
     "styled-components": "^5.3.3"
@@ -46,7 +46,7 @@
   "license": "BSD-3-Clause",
   "devDependencies": {
     "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react": "^7.27.1",
     "gh-pages": "^3.1.0"
   }
 }

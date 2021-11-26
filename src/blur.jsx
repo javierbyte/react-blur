@@ -43,18 +43,23 @@ const ReactBlur = (props) => {
       setDimensions();
     } else {
       // if some other prop changed reblur
-
       if (animating) {
-        console.log("rejected");
         return;
       }
 
       animating = true;
 
       window.requestAnimationFrame(() => {
-        stackBlurImage(imgRef.current, canvasRef.current, blurRadius, widthRef.current, heightRef.current, () => {
-          animating = false;
-        });
+        stackBlurImage(
+          imgRef.current,
+          canvasRef.current,
+          blurRadius,
+          widthRef.current,
+          heightRef.current,
+          () => {
+            animating = false;
+          }
+        );
       });
     }
   });
@@ -80,7 +85,13 @@ const ReactBlur = (props) => {
 
   const loadImage = () => {
     if (isCurrentImgSrc(imgRef.current)) {
-      stackBlurImage(imgRef.current, canvasRef.current, blurRadius, widthRef.current, heightRef.current);
+      stackBlurImage(
+        imgRef.current,
+        canvasRef.current,
+        blurRadius,
+        widthRef.current,
+        heightRef.current
+      );
       return;
     }
 
@@ -88,7 +99,13 @@ const ReactBlur = (props) => {
     imgRef.current.crossOrigin = "Anonymous";
 
     imgRef.current.onload = (event) => {
-      stackBlurImage(imgRef.current, canvasRef.current, blurRadius, widthRef.current, heightRef.current);
+      stackBlurImage(
+        imgRef.current,
+        canvasRef.current,
+        blurRadius,
+        widthRef.current,
+        heightRef.current
+      );
       onLoadFunction(event);
     };
 
@@ -126,7 +143,13 @@ const ReactBlur = (props) => {
   const doResize = () => {
     setDimensions();
 
-    stackBlurImage(imgRef.current, canvasRef.current, blurRadius, widthRef.current, heightRef.current);
+    stackBlurImage(
+      imgRef.current,
+      canvasRef.current,
+      blurRadius,
+      widthRef.current,
+      heightRef.current
+    );
   };
 
   let classes = "react-blur";
@@ -148,8 +171,17 @@ const ReactBlur = (props) => {
     : {};
 
   return (
-    <div className={classes} ref={containerRef} style={containerStyle} {...other}>
-      <canvas className="react-blur-canvas" ref={canvasRef} style={canvasStyle} />
+    <div
+      className={classes}
+      ref={containerRef}
+      style={containerStyle}
+      {...other}
+    >
+      <canvas
+        className="react-blur-canvas"
+        ref={canvasRef}
+        style={canvasStyle}
+      />
       {children}
     </div>
   );

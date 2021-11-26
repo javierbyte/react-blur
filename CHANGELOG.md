@@ -1,3 +1,6 @@
+# 1.0.3
+- Remove `console.log`.
+
 # 1.0.2
 - Dependency updates.
 

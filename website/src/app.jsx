@@ -19,12 +19,13 @@ function App() {
   return (
     <Container>
       <JBX accent={'#fdcb6e'} />
-      <MainHeader>react blur</MainHeader>
+      <MainHeader>react-blur</MainHeader>
       <Space h={1} />
       <Text>React component for creating blurred backgrounds using canvas.</Text>
       <Space h={2} />
+
       <Blur
-        img="example-kyoto.jpg"
+        img="/react-blur/example-kyoto.jpg"
         blurRadius={blur}
         enableStyles
         style={{
