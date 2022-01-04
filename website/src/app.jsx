@@ -1,6 +1,16 @@
 import { useState } from 'react';
 
-import { JBX, MainHeader, Text, Space, Container, Range, Box, A, CodeSnippet } from 'jbx';
+import {
+  JBX,
+  MainHeader,
+  Text,
+  Space,
+  Container,
+  Range,
+  Box,
+  A,
+  CodeSnippet
+} from 'jbx';
 
 import Blur from 'react-blur';
 
@@ -14,14 +24,16 @@ import Blur from 'react-blur'
 function App() {
   const [blurSrc, blurSet] = useState(16);
 
-  const blur = Math.max(blurSrc - 5, 0);
+  const blur = Math.max(blurSrc, 0);
 
   return (
     <Container>
       <JBX accent={'#fdcb6e'} />
       <MainHeader>react-blur</MainHeader>
       <Space h={1} />
-      <Text>React component for creating blurred backgrounds using canvas.</Text>
+      <Text>
+        React component for creating blurred backgrounds using canvas.
+      </Text>
       <Space h={2} />
 
       <Blur
