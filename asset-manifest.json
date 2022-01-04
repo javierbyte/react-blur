@@ -1,17 +1,10 @@
 {
   "files": {
-    "main.js": "/react-blur/static/js/main.91eed03e.chunk.js",
-    "main.js.map": "/react-blur/static/js/main.91eed03e.chunk.js.map",
-    "runtime-main.js": "/react-blur/static/js/runtime-main.16d94130.js",
-    "runtime-main.js.map": "/react-blur/static/js/runtime-main.16d94130.js.map",
-    "static/js/2.8071894f.chunk.js": "/react-blur/static/js/2.8071894f.chunk.js",
-    "static/js/2.8071894f.chunk.js.map": "/react-blur/static/js/2.8071894f.chunk.js.map",
+    "main.js": "/react-blur/static/js/main.1c3ec6ab.js",
     "index.html": "/react-blur/index.html",
-    "static/js/2.8071894f.chunk.js.LICENSE.txt": "/react-blur/static/js/2.8071894f.chunk.js.LICENSE.txt"
+    "main.1c3ec6ab.js.map": "/react-blur/static/js/main.1c3ec6ab.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.16d94130.js",
-    "static/js/2.8071894f.chunk.js",
-    "static/js/main.91eed03e.chunk.js"
+    "static/js/main.1c3ec6ab.js"
   ]
 }
