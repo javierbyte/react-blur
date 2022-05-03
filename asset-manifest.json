@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/react-blur/static/js/main.111f9def.js",
+    "main.css": "/react-blur/static/css/main.c5e7d1cb.css",
+    "main.js": "/react-blur/static/js/main.311e733d.js",
     "index.html": "/react-blur/index.html",
-    "main.111f9def.js.map": "/react-blur/static/js/main.111f9def.js.map"
+    "main.c5e7d1cb.css.map": "/react-blur/static/css/main.c5e7d1cb.css.map",
+    "main.311e733d.js.map": "/react-blur/static/js/main.311e733d.js.map"
   },
   "entrypoints": [
-    "static/js/main.111f9def.js"
+    "static/css/main.c5e7d1cb.css",
+    "static/js/main.311e733d.js"
   ]
 }
