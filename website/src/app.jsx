@@ -9,10 +9,16 @@ import {
   Range,
   Box,
   A,
-  CodeSnippet
+  CodeSnippet,
+  MoreExperiments
 } from 'jbx';
 
-import Blur from 'react-blur';
+import ReactBlur from 'react-blur';
+
+// react-blur is published as babel 6 CJS, which marks `__esModule` with a
+// defineProperty call that bundlers don't reliably detect, so the default
+// import can arrive wrapped one level deep.
+const Blur = ReactBlur.default || ReactBlur;
 
 const exampleCode = `
 // npm install react-blur
@@ -37,7 +43,7 @@ function App() {
       <Space h={2} />
 
       <Blur
-        img="/react-blur/example-kyoto.jpg"
+        img={`${import.meta.env.BASE_URL}example-kyoto.jpg`}
         blurRadius={blur}
         enableStyles
         style={{
@@ -69,6 +75,9 @@ function App() {
         For more information see the{' '}
         <A href="https://github.com/javierbyte/react-blur">github repo</A>.
       </Text>
+      <Space h={2} />
+      <MoreExperiments />
+
       <Space h={2} />
       <Text>
         Made by <A href="https://javier.xyz">javierbyte</A>.

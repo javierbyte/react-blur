@@ -3,40 +3,13 @@
   "description": "React component for creating blurred backgrounds using canvas.",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://javier.xyz/react-blur/",
-  "dependencies": {
-    "capsize": "^2.0.0",
-    "jbx": "^1.7.5",
-    "react": "^17.0.2",
-    "react-blur": "^1.0.3",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^5.0.0",
-    "styled-components": "^5.3.3"
-  },
+  "type": "module",
+  "packageManager": "pnpm@11.21.0",
+  "homepage": "https://javier.xyz/react-blur",
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not IE 11",
-      "not IE_Mob 11",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -44,7 +17,14 @@
   },
   "author": "Javier Bórquez <hi@javier.xyz>",
   "license": "BSD-3-Clause",
+  "dependencies": {
+    "jbx": "^2.11.0",
+    "react": "^19.2.8",
+    "react-blur": "^1.0.3",
+    "react-dom": "^19.2.8"
+  },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "@vitejs/plugin-react": "^6.0.5",
+    "vite": "^8.2.1"
   }
 }

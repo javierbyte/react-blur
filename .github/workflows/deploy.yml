@@ -1,0 +1,46 @@
+name: Deploy
+
+# Builds the demo site in website/ and publishes it to the gh-pages branch,
+# which is what javier.xyz/react-blur rewrites to via
+# javierbyte.github.io/react-blur. The library itself is published to npm by
+# hand and is not touched here.
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: website
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: website/package.json
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: website/.nvmrc
+          cache: pnpm
+          cache-dependency-path: website/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/dist
