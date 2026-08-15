@@ -76,7 +76,7 @@ function App() {
         <A href="https://github.com/javierbyte/react-blur">github repo</A>.
       </Text>
       <Space h={2} />
-      <MoreExperiments />
+      <MoreExperiments exclude="react-blur" />
 
       <Space h={2} />
       <Text>
