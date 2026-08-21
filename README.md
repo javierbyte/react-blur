@@ -1,8 +1,8 @@
-# [React Blur](https://javier.xyz/react-blur/)
+# [React Blur](https://javier.xyz/react-blur)
 
 React component for creating blurred backgrounds using canvas.
 
-[![react-blur](./website/public/react-blur.jpg)](https://javier.xyz/react-blur/)
+[![react-blur](./website/public/react-blur.jpg)](https://javier.xyz/react-blur)
 
 ## Installation
 
